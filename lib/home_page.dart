@@ -6,15 +6,17 @@ import 'package:flutter/material.dart';
 
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({Key? key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  String fullName = 'Zeop';
-   
+  String fullName = 'Zeopr';
+  String slackName = 'Carole';
+  String githubHandle = 'GitHubHandle';
+  String personalBio = 'PersonalBio';
 
   void updateName(String newName) {
     setState(() {
@@ -22,22 +24,50 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  void updateSlackName(String newSlackName) {
+    setState(() {
+      slackName = newSlackName;
+    });
+  }
+
+  void updateGithubHandle(String newGithubHandle) {
+    setState(() {
+      githubHandle = newGithubHandle;
+    });
+  }
+
+  void updatePersonalBio(String newPersonalBio) {
+    setState(() {
+      personalBio = newPersonalBio;
+    });
+  }
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
-        title: Text('$fullName\'s CV'), // Set the title dynamically
+        title: Text('$fullName\'s CV'),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             CustomRichText(
-        heading: 'Full name: ',
-        content: fullName,
+              heading: 'Full name: ',
+              content: fullName,
             ),
-            SizedBox(height: MediaQuery.sizeOf(context).height * 0.08,),
+            CustomRichText(
+              heading: 'Slack name: ',
+              content: slackName,
+            ),
+            CustomRichText(
+              heading: 'GitHub Handle: ',
+              content: githubHandle,
+            ),
+            CustomRichText(
+              heading: 'Personal Bio: ',
+              content: personalBio,
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.08,),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -46,19 +76,30 @@ class _HomePageState extends State<HomePage> {
                     builder: (context) => EditPage(
                       updateName: updateName,
                       currentName: fullName,
+                      updateSlackName: updateSlackName,
+                      currentSlackName: slackName,
+                      updateGithubHandle: updateGithubHandle,
+                      currentGithubHandle: githubHandle,
+                      updatePersonalBio: updatePersonalBio,
+                      currentPersonalBio: personalBio,
                     ),
                   ),
                 );
               },
               child: const Text('Edit CV'),
             ),
-        ]
-
+          ],
         ),
       ),
-        );
-
+    );
   }
 }
+
+
+
+
+
+
+
 
 
