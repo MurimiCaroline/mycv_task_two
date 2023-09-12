@@ -30,13 +30,17 @@ class CustomButton extends StatelessWidget {
 
 
 class MyCv extends StatelessWidget {
-  final String Name;
+  final String name;
  const MyCv(
-      {super.key, required this.Name,});
+      {super.key, required this.name,});
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: Text('$Name'),
+    return Scaffold(
+        body: Column(
+          children: [
+            Text('$name')
+          ],
+        )
         );
   }
 }
