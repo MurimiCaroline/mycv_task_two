@@ -42,7 +42,6 @@ class _HomePageState extends State<HomePage> {
                       fontSize: 16.0,
                     ),
                   ),
-                 SizedBox(width: MediaQuery.sizeOf(context).width * 0.8,),
                   TextSpan(
                     text: name,
                     style: const TextStyle(
@@ -55,7 +54,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            const SizedBox(height: 20),
+            const SizedBox(height: MediaQuery.sizeOf(context).height * 0.8,),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
