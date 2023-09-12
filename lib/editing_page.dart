@@ -12,7 +12,8 @@ class EditPage extends StatefulWidget {
   final Function(String) updatePersonalBio;
   final String currentPersonalBio;
 
-  const EditPage({super.key,
+  const EditPage({
+    super.key,
     required this.updateName,
     required this.currentName,
     required this.updateSlackName,
@@ -32,6 +33,8 @@ class _EditPageState extends State<EditPage> {
   final TextEditingController slackNameController = TextEditingController();
   final TextEditingController githubHandleController = TextEditingController();
   final TextEditingController personalBioController = TextEditingController();
+  
+  
 
   @override
   void initState() {
@@ -50,53 +53,56 @@ class _EditPageState extends State<EditPage> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: <Widget>[
-            TextField(
-              controller: nameController,
-              decoration: const InputDecoration(labelText: 'Full Name'),
-            ),
-            const SizedBox(height: 20),
-            TextField(
-              controller: slackNameController,
-              decoration: const InputDecoration(labelText: 'Slack Name'),
-            ),
-            const SizedBox(height: 20),
-            TextField(
-              controller: githubHandleController,
-              decoration: const InputDecoration(labelText: 'GitHub Handle'),
-            ),
-            const SizedBox(height: 20),
-            TextField(
-              controller: personalBioController,
-              decoration: const InputDecoration(labelText: 'Personal Bio'),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                String editedName = nameController.text;
-                String editedSlackName = slackNameController.text;
-                String editedGithubHandle = githubHandleController.text;
-                String editedPersonalBio = personalBioController.text;
-
-                if (editedName.isNotEmpty ||
-                    editedSlackName.isNotEmpty ||
-                    editedGithubHandle.isNotEmpty ||
-                    editedPersonalBio.isNotEmpty) {
-                  widget.updateName(editedName);
-                  widget.updateSlackName(editedSlackName);
-                  widget.updateGithubHandle(editedGithubHandle);
-                  widget.updatePersonalBio(editedPersonalBio);
-                }
-
-                Navigator.pop(context);
-              },
-              child: const Text('Save'),
-            ),
-          ],
+        child: Form(
+         
+          child: Column(
+            children: <Widget>[
+              TextFormField(
+                controller: nameController,
+                decoration: const InputDecoration(labelText: 'Full Name'),
+                
+              ),
+              const SizedBox(height: 20),
+              TextFormField(
+                controller: slackNameController,
+                decoration: const InputDecoration(labelText: 'Slack Name'),
+              ),
+              const SizedBox(height: 20),
+              TextFormField(
+                controller: githubHandleController,
+                decoration: const InputDecoration(labelText: 'GitHub Handle'),
+              ),
+              const SizedBox(height: 20),
+              TextFormField(
+                controller: personalBioController,
+                decoration: const InputDecoration(labelText: 'Personal Bio'),
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  String editedName = nameController.text;
+                  String editedSlackName = slackNameController.text;
+                  String editedGithubHandle = githubHandleController.text;
+                  String editedPersonalBio = personalBioController.text;
+        
+                  if (editedName.isNotEmpty ||
+                      editedSlackName.isNotEmpty ||
+                      editedGithubHandle.isNotEmpty ||
+                      editedPersonalBio.isNotEmpty) {
+                    widget.updateName(editedName);
+                    widget.updateSlackName(editedSlackName);
+                    widget.updateGithubHandle(editedGithubHandle);
+                    widget.updatePersonalBio(editedPersonalBio);
+                  }
+        
+                  Navigator.pop(context);
+                },
+                child: const Text('Save'),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 }
-

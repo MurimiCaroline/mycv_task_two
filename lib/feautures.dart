@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mycv_task_two/home_page.dart';
-import 'package:mycv_task_two/editing_page.dart';
 
 class CustomButton extends StatelessWidget {
   final String here;
@@ -50,12 +48,13 @@ class CustomRichText extends StatelessWidget{
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
                 fontSize: 16.0,
+                
               ),
             ),
             TextSpan(
               text: content,
               style: const TextStyle(
-                color: Colors.blue,
+                color: Colors.black,
                 fontStyle: FontStyle.normal,
                 fontSize: 20.0,
               ),
@@ -66,3 +65,30 @@ class CustomRichText extends StatelessWidget{
   }
 
   }
+
+class CustomListTile extends StatelessWidget{
+ final String topic;
+//  final String paragraph;
+  const CustomListTile (
+{super.key, required this.topic, /*required this.paragraph*/});
+
+  @override
+  Widget build(BuildContext context){
+    return ListTile(
+      title: Text(topic,
+      style: TextStyle(
+        backgroundColor: Colors.blue[400],
+        color: Colors.black87,
+        fontWeight: FontWeight.bold,
+        fontSize: 30,
+      ),),
+      /*subtitle: Text(paragraph,
+      style: TextStyle(
+        fontWeight: FontWeight.normal,
+        fontSize: 20,
+      ),
+      ),*/
+
+    );
+  }
+}
