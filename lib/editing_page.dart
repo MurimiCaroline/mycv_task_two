@@ -6,7 +6,8 @@ class EditPage extends StatefulWidget {
   final Function(String) updateName;
   final String currentName; // Pass the current name from HomePage
 
-  const EditPage({super.key, required this.updateName, required this.currentName});
+
+  const EditPage({super.key, required this.updateName, required this.currentName,});
 
   @override
   _EditPageState createState() => _EditPageState();
@@ -15,17 +16,19 @@ class EditPage extends StatefulWidget {
 class _EditPageState extends State<EditPage> {
   final TextEditingController nameController = TextEditingController();
 
+
   @override
   void initState() {
     super.initState();
     nameController.text = widget.currentName; // Initialize the controller with the current name
+
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Edit Name'),
+        title: const Text('Edit CV'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -33,7 +36,7 @@ class _EditPageState extends State<EditPage> {
           children: <Widget>[
             TextField(
               controller: nameController,
-              decoration: const InputDecoration(labelText: 'Name'),
+              decoration: const InputDecoration(labelText: ' Full Name'),
             ),
             const SizedBox(height: 20),
             ElevatedButton(
