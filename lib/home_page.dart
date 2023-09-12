@@ -12,7 +12,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   String name = 'Your Name';
-
+  var space = MediaQuery.of(context).width * 0.8;
 
   void updateName(String newName) {
     setState(() {
@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
                     text: name,
                     style: const TextStyle(
                       color: Colors.blue,
-                      fontStyle: FontStyle.italic,
+                      fontStyle: FontStyle.normal,
                       fontSize: 20.0,
                     ),
                   ),
@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            const SizedBox(height: MediaQuery.sizeOf(context).height * 0.8,),
+             SizedBox(height: MediaQuery.sizeOf(context).height * 0.04,),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
