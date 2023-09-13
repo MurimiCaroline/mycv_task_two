@@ -68,27 +68,63 @@ class CustomRichText extends StatelessWidget{
 
 class CustomListTile extends StatelessWidget{
  final String topic;
-//  final String paragraph;
+ final String paragraph;
   const CustomListTile (
-{super.key, required this.topic, /*required this.paragraph*/});
+{super.key, required this.topic, required this.paragraph});
 
   @override
   Widget build(BuildContext context){
+     
     return ListTile(
       title: Text(topic,
-      style: TextStyle(
-        backgroundColor: Colors.blue[400],
+      style: const TextStyle(
+        backgroundColor: Color.fromARGB(255, 209, 223, 235),
         color: Colors.black87,
         fontWeight: FontWeight.bold,
         fontSize: 30,
-      ),),
-      /*subtitle: Text(paragraph,
-      style: TextStyle(
+      ),
+      ),
+      subtitle: Text(paragraph,
+      style: const TextStyle(
         fontWeight: FontWeight.normal,
         fontSize: 20,
       ),
-      ),*/
+      ),
 
+    );
+  }
+}
+
+
+class CustomTextFormFieldii extends StatelessWidget{
+ final String controller;
+ final String tag;
+  const CustomTextFormFieldii(
+{super.key, required this.controller, required this.tag});
+
+  @override
+  Widget build(BuildContext context){
+    return TextFormField(
+      keyboardType: TextInputType.multiline,
+      maxLines: null,
+          decoration: InputDecoration(labelText: tag),
+    );
+  }
+}
+
+
+class CustomTextFormFieldname extends StatelessWidget{
+ TextEditingController controller;
+ final String tag;
+  CustomTextFormFieldname(
+{super.key, required this.controller, required this.tag});
+
+  @override
+  Widget build(BuildContext context){
+    return TextFormField(
+      keyboardType: TextInputType.name,
+      maxLines: null,
+          decoration: InputDecoration(labelText: tag),
     );
   }
 }

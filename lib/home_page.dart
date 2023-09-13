@@ -17,6 +17,12 @@ class _HomePageState extends State<HomePage> {
   String slackName = 'Carole_Murimi';
   String githubHandle = 'https://github.com/MurimiCaroline';
   String personalBio = 'PersonalBio';
+  String education = 'Your education details go here.';
+  String experience = 'Your experience details go here.';
+  String project = 'Your project details go here.';
+  String socialMedia = 'Your social media links go here.';
+
+  Color myColor = const Color.fromARGB(255, 216, 219, 221);
 
   void updateName(String newName) {
     setState(() {
@@ -41,67 +47,121 @@ class _HomePageState extends State<HomePage> {
       personalBio = newPersonalBio;
     });
   }
-  @override
+
+void updateEducation(String neweducation) {
+    setState(() {
+      education = neweducation;
+    });
+  }
+
+  void updateProject (String newProject) {
+    setState(() {
+      personalBio = newProject;
+    });
+  }
+
+  void updateExperience(String newexperience) {
+    setState(() {
+      experience = newexperience;
+    });
+  }
+
+void updateSocialMedia  (String newsocialMedia) {
+    setState(() {
+      socialMedia = newsocialMedia;
+    });
+  }
+
+ @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('$fullName\'s CV'),
       ),
-      body: Center(
-        child: Container(
-          decoration: BoxDecoration(
-            color: Colors.pink[100],
-            borderRadius: BorderRadius.circular(40)
+      body: Stack(
+        children: [ 
+          Positioned.fill(
+            child: Image.asset(
+              'images/homebg.jpg', 
+              fit: BoxFit.cover,
+            ),
           ),
-          height: MediaQuery.sizeOf(context).height*0.85,
-          width: MediaQuery.sizeOf(context).width *0.75,
+                    Center(
           child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                CustomRichText(
-                  heading: 'Full name: ',
-                  content: fullName,
+            padding: const EdgeInsets.all(5.0),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.vertical,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: myColor,
+                  borderRadius: BorderRadius.circular(20),
                 ),
-                CustomRichText(
-                  heading: 'Slack name: ',
-                  content: slackName,
-                ),
-                CustomRichText(
-                  heading: 'GitHub Handle: ',
-                  content: githubHandle,
-                ),
-                CustomRichText(
-                  heading: 'Personal Bio: ',
-                  content: personalBio,
-                ),
-                SizedBox(height: MediaQuery.of(context).size.height * 0.08,),
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => EditPage(
-                          updateName: updateName,
-                          currentName: fullName,
-                          updateSlackName: updateSlackName,
-                          currentSlackName: slackName,
-                          updateGithubHandle: updateGithubHandle,
-                          currentGithubHandle: githubHandle,
-                          updatePersonalBio: updatePersonalBio,
-                          currentPersonalBio: personalBio,
-                        ),
+                
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      CustomRichText(
+                        heading: 'Full name: ',
+                        content: fullName,
                       ),
-                    );
-                  },
-                  child: const Text('Edit CV'),
+                      CustomRichText(
+                        heading: 'Slack name: ',
+                        content: slackName,
+                      ),
+                      CustomRichText(
+                        heading: 'GitHub Handle: ',
+                        content: githubHandle,
+                      ),
+                      
+                      SizedBox(height: MediaQuery.sizeOf(context).height *0.05,),
+                      // Add content sections
+                      CustomListTile(topic: 'Personal Bio', paragraph: education),
+                      CustomListTile(topic: 'Education', paragraph: education),
+                      CustomListTile(topic: 'Experience', paragraph: experience),
+                      CustomListTile(topic: 'Project', paragraph: project),
+                      CustomListTile(topic: 'Social Media', paragraph: socialMedia),
+                  
+                      SizedBox(height: MediaQuery.of(context).size.height * 0.08,),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => EditPage(
+                                updateName: updateName,
+                                currentName: fullName,
+                                updateSlackName: updateSlackName,
+                                currentSlackName: slackName,
+                                updateGithubHandle: updateGithubHandle,
+                                currentGithubHandle: githubHandle,
+                                updatePersonalBio: updatePersonalBio,
+                                currentPersonalBio: personalBio,
+                                // Pass content sections to EditPage
+                                updateEducation: updateEducation,
+                                currentEducation: education,
+                                updateExperience: updateExperience,
+                                currentExperience: experience,
+                                updateProject: updateProject,
+                                currentProject: project,
+                                updateSocialMedia: updateSocialMedia,
+                                currentSocialMedia: socialMedia,
+                              ),
+                            ),
+                          );
+                        },
+                        child: const Text('Edit CV'),
+                      ),
+                    ],
+                  ),
                 ),
-              ],
+              ),
             ),
           ),
         ),
+        ]
       ),
     );
   }
