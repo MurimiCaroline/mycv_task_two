@@ -4,7 +4,6 @@ import 'package:mycv_task_two/feautures.dart';
 
 import 'package:flutter/material.dart';
 
-
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -16,77 +15,120 @@ class _HomePageState extends State<HomePage> {
   String fullName = 'Caroline Murimi';
   String slackName = 'Carole_Murimi';
   String githubHandle = 'https://github.com/MurimiCaroline';
-  String personalBio = 'PersonalBio';
-  String education = 'Your education details go here.';
-  String experience = 'Your experience details go here.';
-  String project = 'Your project details go here.';
-  String socialMedia = 'Your social media links go here.';
+  String personalBio = """I am Caroline, a passionate tech enthusiast on an exciting journey through the world of Electrical and Electronics Engineering.
+   With an insatiable curiosity for all things tech-related, I'm constantly exploring the ever-evolving landscape of electronics and electrical systems. 
+    Beyond the world of circuits and coding, I'm also fluent in French, which opens doors to a rich and diverse cultural perspective.""" ;
+  String education = """" Primary - Kenya Certificate of Primary Education.
+  High School - Kenya Cerificate of SecondaryEducation.
+  University - Currently in my Undergraduate""";
+  String experience = """Intern at KPLC. 
+Intern at BnB Electrix""";
+  String project = 'I have worked on several projects and the major one is https://github.com/MurimiCaroline/book_spa.';
+  String socialMedia = 'https://linktr.ee/murimicaroline';
 
   Color myColor = const Color.fromARGB(255, 216, 219, 221);
 
   void updateName(String newName) {
     setState(() {
-      fullName = newName;
+      
+       if (newName.isEmpty) {
+       fullName= "not added";
+      } else {
+       fullName = newName;
+      }
     });
   }
 
   void updateSlackName(String newSlackName) {
     setState(() {
-      slackName = newSlackName;
+     
+       if (newSlackName.isEmpty) {
+      slackName = "not added";
+      } else {
+        slackName = newSlackName;
+      }
     });
   }
 
   void updateGithubHandle(String newGithubHandle) {
     setState(() {
-      githubHandle = newGithubHandle;
+      
+       if (newGithubHandle.isEmpty) {
+       githubHandle= "not added";
+      } else {
+       githubHandle = newGithubHandle;
+      }
     });
   }
 
   void updatePersonalBio(String newPersonalBio) {
     setState(() {
-      personalBio = newPersonalBio;
+     
+       if (newPersonalBio.isEmpty) {
+       personalBio = "not added";
+      } else {
+        personalBio = newPersonalBio;
+      }
     });
   }
 
-void updateEducation(String neweducation) {
+  void updateEducation(String neweducation) {
     setState(() {
-      education = neweducation;
+      
+       if (neweducation.isEmpty) {
+       education = "not added";
+      } else {
+       education = neweducation;
+      }
+      
     });
   }
 
-  void updateProject (String newProject) {
+  void updateProject(String newProject) {
     setState(() {
-      personalBio = newProject;
+      
+       if (newProject.isEmpty) {
+       project = "not added";
+      } else {
+       project = newProject;
+      }
     });
   }
 
   void updateExperience(String newexperience) {
     setState(() {
-      experience = newexperience;
+      if (newexperience.isEmpty) {
+        experience = "not added";
+      } else {
+        experience = newexperience;
+      }
     });
   }
 
-void updateSocialMedia  (String newsocialMedia) {
+  void updateSocialMedia(String newsocialMedia) {
     setState(() {
-      socialMedia = newsocialMedia;
+      if (newsocialMedia.isEmpty) {
+        socialMedia = "not added";
+      } else {
+        socialMedia = newsocialMedia;
+      }
     });
   }
 
- @override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('$fullName\'s CV'),
       ),
-      body: Stack(
-        children: [ 
-          Positioned.fill(
-            child: Image.asset(
-              'images/homebg.jpg', 
-              fit: BoxFit.cover,
-            ),
+      body: Stack(children: [
+        Positioned.fill(
+          child: Image.asset(
+            'images/homebg.jpg',
+            fit: BoxFit.cover,
           ),
-                    Center(
+        ),
+        Center(
           child: Padding(
             padding: const EdgeInsets.all(5.0),
             child: SingleChildScrollView(
@@ -96,7 +138,6 @@ void updateSocialMedia  (String newsocialMedia) {
                   color: myColor,
                   borderRadius: BorderRadius.circular(20),
                 ),
-                
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
@@ -111,20 +152,24 @@ void updateSocialMedia  (String newsocialMedia) {
                         heading: 'Slack name: ',
                         content: slackName,
                       ),
-                      CustomRichText(
-                        heading: 'GitHub Handle: ',
-                        content: githubHandle,
+                     
+
+                      SizedBox(
+                        height: MediaQuery.sizeOf(context).height * 0.02,
                       ),
-                      
-                      SizedBox(height: MediaQuery.sizeOf(context).height *0.05,),
-                      // Add content sections
-                      CustomListTile(topic: 'Personal Bio', paragraph: education),
+                      CustomListTile(topic: 'Github Handle', paragraph: githubHandle),
+                      CustomListTile(
+                          topic: 'Personal Bio', paragraph: personalBio),
                       CustomListTile(topic: 'Education', paragraph: education),
-                      CustomListTile(topic: 'Experience', paragraph: experience),
+                      CustomListTile(
+                          topic: 'Experience', paragraph: experience),
                       CustomListTile(topic: 'Project', paragraph: project),
-                      CustomListTile(topic: 'Social Media', paragraph: socialMedia),
-                  
-                      SizedBox(height: MediaQuery.of(context).size.height * 0.08,),
+                      CustomListTile(
+                          topic: 'Social Media', paragraph: socialMedia),
+
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.08,
+                      ),
                       ElevatedButton(
                         onPressed: () {
                           Navigator.push(
@@ -161,17 +206,7 @@ void updateSocialMedia  (String newsocialMedia) {
             ),
           ),
         ),
-        ]
-      ),
+      ]),
     );
   }
 }
-
-
-
-
-
-
-
-
-

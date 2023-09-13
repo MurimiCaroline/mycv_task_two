@@ -78,7 +78,7 @@ class _EditPageState extends State<EditPage> {
         title: const Text('Edit CV'),
       ),
       body: SingleChildScrollView(
-       scrollDirection: Axis.vertical,
+        scrollDirection: Axis.vertical,
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Form(
@@ -110,19 +110,19 @@ class _EditPageState extends State<EditPage> {
                 // Add TextFormField for each content section
                 const SizedBox(height: 20),
                 TextFormField(
-                   maxLines: null,
+                  maxLines: null,
                   controller: educationController,
                   decoration: const InputDecoration(labelText: 'Education'),
                 ),
                 const SizedBox(height: 20),
                 TextFormField(
-                   maxLines: null,
+                  maxLines: null,
                   controller: experienceController,
                   decoration: const InputDecoration(labelText: 'Experience'),
                 ),
                 const SizedBox(height: 20),
                 TextFormField(
-                   maxLines: null,
+                  maxLines: null,
                   controller: projectController,
                   decoration: const InputDecoration(labelText: 'Project'),
                 ),
@@ -139,23 +139,21 @@ class _EditPageState extends State<EditPage> {
                     String editedSlackName = slackNameController.text;
                     String editedGithubHandle = githubHandleController.text;
                     String editedPersonalBio = personalBioController.text;
-                    // Get edited content section text
                     String editedEducation = educationController.text;
                     String editedExperience = experienceController.text;
                     String editedProject = projectController.text;
                     String editedSocialMedia = socialMediaController.text;
-      
-                    // Call update functions for each field
+
                     widget.updateName(editedName);
                     widget.updateSlackName(editedSlackName);
                     widget.updateGithubHandle(editedGithubHandle);
                     widget.updatePersonalBio(editedPersonalBio);
-                    // Call update functions for content sections
+
                     widget.updateEducation(editedEducation);
                     widget.updateExperience(editedExperience);
                     widget.updateProject(editedProject);
                     widget.updateSocialMedia(editedSocialMedia);
-      
+
                     Navigator.pop(context);
                   },
                   child: const Text('Save'),

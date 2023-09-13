@@ -81,13 +81,13 @@ class CustomListTile extends StatelessWidget{
         backgroundColor: Color.fromARGB(255, 209, 223, 235),
         color: Colors.black87,
         fontWeight: FontWeight.bold,
-        fontSize: 30,
+        fontSize: 25,
       ),
       ),
       subtitle: Text(paragraph,
       style: const TextStyle(
         fontWeight: FontWeight.normal,
-        fontSize: 20,
+        fontSize: 15,
       ),
       ),
 
@@ -112,19 +112,10 @@ class CustomTextFormFieldii extends StatelessWidget{
   }
 }
 
-
-class CustomTextFormFieldname extends StatelessWidget{
- TextEditingController controller;
- final String tag;
-  CustomTextFormFieldname(
-{super.key, required this.controller, required this.tag});
-
-  @override
-  Widget build(BuildContext context){
-    return TextFormField(
-      keyboardType: TextInputType.name,
-      maxLines: null,
-          decoration: InputDecoration(labelText: tag),
-    );
+customIf(String newpara, String para) {
+  if (newpara.isEmpty) {
+    para = "not added";
+  } else {
+    para = newpara;
   }
-}
+} 

@@ -1,16 +1,13 @@
-# mycv_task_two
+This is the project that Iwill be submitting for my second task in the HNG intenship.
 
-A new Flutter project.
+This is basically a simple app that displays prefilled details of a  Curriculum vitae. 
 
-## Getting Started
+On navigation to the edit page, one is able to edit all the fields and on saving, the updated details are now visible on the home page.
 
-This project is a starting point for a Flutter application.
+The app works well on both web and mobile (android).
 
-A few resources to get you started if this is your first Flutter project:
+I am on flutter version 3.13.2.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+and Dart version 3.1.0.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+I have no minSDK version defined for my app. 
